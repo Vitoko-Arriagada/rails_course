@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :projects do
+    resources :tasks
+  end
+  namespace :project do
+    resources :tasks
+  end
   get "dashboard/index"
   devise_for :users
   resources :admin, as: "projects"

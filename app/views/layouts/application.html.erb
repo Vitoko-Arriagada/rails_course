@@ -20,6 +20,7 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/dashboard/index" >Dashboard</a>
             </li>
+            <li class="nav-item"><%= link_to "Projects!", "/projects", class: 'nav-link active'%></li>
             <% if user_signed_in? %>
               <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, :method => :delete, class: 'nav-link active' %></li>
             <% else %>
