@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :projects
   get "dashboard/index"
   devise_for :users
   resources :admin, as: "projects"
