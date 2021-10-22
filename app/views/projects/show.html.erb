@@ -1,43 +1,56 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= @project.user_id %>
-</p>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<h1 class="text-center">Projects</h1>
+<div class="row fluid bg-secondary">
+  <div class="col">
+    <p>ESTADO</p>
+  </div>
+  <div class="col">
+    <%= link_to '<i class="fa fa-edit" aria-hidden="true"></i> Edit'.html_safe, edit_project_path(@project) , type: "button", class: "btn boton_edit"%>
+    <%= link_to '<i class="fa fa-trash " aria-hidden="true"></i> Delete'.html_safe, @project, method: :delete, data: { confirm: 'Are you sure?' }, type: "button", class: "btn boton_delete " %>
+  </div>
+  <div class="col-fluid">
+    <div class="row">
+      <div class="col">
+        <h2 class="name"> <%= @project.name %></h2>
+        <h5 class="descripcion"><%= @project.description %></h5>
+      </div>
+    </div>
+  </div>
+  <hr/>
+</div>
 <hr/>
-<h1>New task</h1>
-<%= render 'tasks/form' %>
+<div class="row fluid bg-secondary">
+  <h1>New task</h1>
+  <%= render 'tasks/form' %>
+  <hr/>
+</div>
 <hr/>
-<h1>Listing tasks</h1>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @project.tasks.each do |task| %>
-    <% if task.persisted? %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.description %></td>
-        <td><%= task.status %></td>
-        <td><%= link_to 'Show', [task.project, task] %></td>
-        <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-        <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row fluid bg-secondary">
+  <h1>Listing tasks</h1>
+  <div class="row fluid bg-secondary" style="
+    margin-left: 0px">
+    <% @project.tasks.each do |task| %>
+      <% if task.persisted? %>
+        <div class="col">
+          <p><%= task.status %></p>
+        </div>
+        <div class="col">
+          <%= link_to '<i class="fa fa-edit" aria-hidden="true"></i> Edit'.html_safe,  edit_project_task_path(task.project, task) , type: "button", class: "btn boton_edit"%>
+          <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe,  [task.project, task] , type: "button", class: "btn boton_show"%>
+        </div>
+        <div class="col-fluid">
+          <div class="row">
+            <div class="col">
+              <h2 class="name"><%= task.name %></h2>
+              <h5 class="descripcion"><%= task.description %></h5>
+            </div>
+            <div class="col">
+              <%= link_to '<i class="fa fa-trash " aria-hidden="true"></i> Delete'.html_safe,[task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, type: "button", class: "btn boton_delete " %>
+            </div>
+          </div>
+        </div>
+        <hr/>
+      <% end %>
     <% end %>
-  <% end %>
-</table>
+  </div>
+</div>

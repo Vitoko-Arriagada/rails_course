@@ -3,9 +3,85 @@
 @import "config/bootstrap_variables";
 @import "bootstrap/scss/bootstrap";
 
+html{
+  text-align: center;
+}
+
+.cuerpo { 
+  background:darkgrey
+}
 
 div{
-  border: red 1px solid;
+  border: red 0px solid;
 }
-.delete-button-background {background-color:#e74f4f;}
-.delete-text-color {color:#000000;}
+
+
+.boton_delete{
+  background: #fd1015;
+  color: #f9fafb;
+  margin-left: 80px;
+}
+
+
+.left {
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-left: 57px;
+  float: left;
+  position: relative;
+  width: 45%;
+  border: steelblue solid 1px;
+  height: auto;
+}
+
+.right {
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-left: 10px;
+  position: relative;
+  float: left;
+  width: 45%;
+  border: steelblue solid 1px;
+  height: auto;
+}
+
+.btn {
+  border-radius: 35px;
+}
+
+.content {
+  width: 100%;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 10px;   
+  padding-bottom: 10px;
+  background-color: steelblue;
+  width: 97%;
+}
+
+.boton_new_project{
+  background:slateblue;
+  color: #ffffff;
+}
+
+.boton_edit{
+  background: #4a9737;
+  color: #ffffff;
+}
+
+.boton_show{
+  background: #ffc65a;
+    color: #000000;
+}
+
+.name{
+  margin-left: 35px;
+}
+
+.descripcion{
+  margin-left: 80px;
+}

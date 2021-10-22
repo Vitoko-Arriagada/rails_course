@@ -1,27 +1,26 @@
 <p id="notice"><%= notice %></p>
 <h1 class="text-center">Projects</h1>
-<div class="row fluid">
+<div class="row fluid bg-secondary">
   <% @projects.each do |project| %>
-    <div class="col-6">
+    <div class="col">
       <p>ESTADO</p>
     </div>
-    <div class="col-6">
-      <p>BOTONES</p>
-      <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i> Edit'.html_safe, edit_project_path(project) , type: "button", class: "btn btn-primary delete-button-background delete-text-color"%>
-      <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i> Show'.html_safe, project , type: "button", class: "btn btn-primary delete-button-background delete-text-color"%>
+    <div class="col">
+      <%= link_to '<i class="fa fa-edit" aria-hidden="true"></i> Edit'.html_safe, edit_project_path(project) , type: "button", class: "btn boton_edit"%>
+      <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe, project , type: "button", class: "btn boton_show"%>
     </div>
     <div class="col-fluid">
-      <div class=row>
-        <div class="col-6">
-          <h2><%= project.name %></h2>
-          <%= project.description %>
+      <div class="row">
+        <div class="col">
+          <h2 class="name"><%= project.name %></h2>
+          <h5 class="descripcion"><%= project.description %></h5>
         </div>
-        <div class="col-6">
-          <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, project, method: :delete, data: { confirm: 'Are you sure?' }, type: "button", class: "btn btn-primary delete-button-background delete-text-color" %>
+        <div class="col">
+          <%= link_to '<i class="fa fa-trash " aria-hidden="true"></i> Delete'.html_safe, project, method: :delete, data: { confirm: 'Are you sure?' }, type: "button", class: "btn boton_delete " %>
         </div>
       </div>
     </div>
     <hr/>
   <% end %>
 </div>
-<%= link_to 'New Project', new_project_path %>
+<%= link_to '<i class="fa fa-plus-square" aria-hidden="true"></i> New Project'.html_safe, new_project_path , type: "button", class: "btn btn-primary boton_new_project"%>
