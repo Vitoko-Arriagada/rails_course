@@ -3,7 +3,11 @@
 <div class="row fluid bg-secondary">
   <% @projects.each do |project| %>
     <div class="col">
-      <h5><span class="badge badge-secondary <%= @estado_projecto[project.id] %>"><%= @estado_projecto[project.id]%></span></h5>
+      <% if project.tasks.count == 0%>
+        <h5><span class="badge badge-secondary <%= @estado_projecto[project.id] %>">Este proyecto esta vacio</span></h5>
+      <%else%>
+        <h5><span class="badge badge-secondary <%= @estado_projecto[project.id] %>"><%= @estado_projecto[project.id]%></span></h5>
+      <%end%>
     </div>
     <div class="col">
       <%= link_to '<i class="fa fa-edit" aria-hidden="true"></i> Edit'.html_safe, edit_project_path(project) , type: "button", class: "btn boton_edit"%>
