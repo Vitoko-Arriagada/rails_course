@@ -3,7 +3,7 @@
 <div class="row fluid bg-secondary">
   <% @projects.each do |project| %>
     <div class="col">
-      <p>ESTADO</p>
+      <h5><span class="badge badge-secondary <%= @estado_projecto[project.id] %>"><%= @estado_projecto[project.id]%></span></h5>
     </div>
     <div class="col">
       <%= link_to '<i class="fa fa-edit" aria-hidden="true"></i> Edit'.html_safe, edit_project_path(project) , type: "button", class: "btn boton_edit"%>

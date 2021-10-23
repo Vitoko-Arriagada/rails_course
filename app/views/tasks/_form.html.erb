@@ -18,12 +18,16 @@
     <%= f.text_area :description %>
   </div>
   <hr>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.select :status, Task::STATUS_OPTION %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <% if defined? status%>
+    <div class="field" style="display: none">
+    <% else %>
+      <div class="field">
+      <% end %>
+      <%= f.label :status %><br />
+      <%= f.select :status, Task::STATUS_OPTION %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>

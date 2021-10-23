@@ -2,7 +2,7 @@
 <h1 class="text-center">Projects</h1>
 <div class="row fluid bg-secondary">
   <div class="col">
-    <p>ESTADO</p>
+    <h5><span class="badge badge-secondary <%= @estado_projecto %>"><%= @estado_projecto %></span></h5>
   </div>
   <div class="col">
     <%= link_to '<i class="fa fa-edit" aria-hidden="true"></i> Edit'.html_safe, edit_project_path(@project) , type: "button", class: "btn boton_edit"%>
@@ -21,36 +21,37 @@
 <hr/>
 <div class="row fluid bg-secondary">
   <h1>New task</h1>
-  <%= render 'tasks/form' %>
+  <%= render 'tasks/form' , status:"no-started"%>
   <hr/>
-</div>
-<hr/>
-<div class="row fluid bg-secondary">
-  <h1>Listing tasks</h1>
-  <div class="row fluid bg-secondary" style="
+    </div>
+    <hr/>
+    <div class="row fluid bg-secondary">
+      <h1>Listing tasks</h1>
+      <div class="row fluid bg-secondary" style="
     margin-left: 0px">
-    <% @project.tasks.each do |task| %>
-      <% if task.persisted? %>
-        <div class="col">
-          <p><%= task.status %></p>
-        </div>
-        <div class="col">
-          <%= link_to '<i class="fa fa-edit" aria-hidden="true"></i> Edit'.html_safe,  edit_project_task_path(task.project, task) , type: "button", class: "btn boton_edit"%>
-          <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe,  [task.project, task] , type: "button", class: "btn boton_show"%>
-        </div>
-        <div class="col-fluid">
-          <div class="row">
+        <% @project.tasks.each do |task| %>
+          <% if task.persisted? %>
+            <%  @clase_status = @estados[task.id]%>
             <div class="col">
-              <h2 class="name"><%= task.name %></h2>
-              <h5 class="descripcion"><%= task.description %></h5>
+              <h5><span class="badge badge-secondary <%= @clase_status %>"><%= task.status %></span></h5>
             </div>
             <div class="col">
-              <%= link_to '<i class="fa fa-trash " aria-hidden="true"></i> Delete'.html_safe,[task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, type: "button", class: "btn boton_delete " %>
+              <%= link_to '<i class="fa fa-edit" aria-hidden="true"></i> Edit'.html_safe,  edit_project_task_path(task.project, task) , type: "button", class: "btn boton_edit"%>
+              <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe,  [task.project, task] , type: "button", class: "btn boton_show"%>
             </div>
-          </div>
-        </div>
-        <hr/>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+            <div class="col-fluid">
+              <div class="row">
+                <div class="col">
+                  <h2 class="name"><%= task.name %></h2>
+                  <h5 class="descripcion"><%= task.description %></h5>
+                </div>
+                <div class="col">
+                  <%= link_to '<i class="fa fa-trash " aria-hidden="true"></i> Delete'.html_safe,[task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, type: "button", class: "btn boton_delete " %>
+                </div>
+              </div>
+            </div>
+            <hr/>
+          <% end %>
+        <% end %>
+      </div>
+    </div>

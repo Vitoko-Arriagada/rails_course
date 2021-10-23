@@ -3,6 +3,18 @@
 @import "config/bootstrap_variables";
 @import "bootstrap/scss/bootstrap";
 
+.no-started{
+  color:white;
+  background-color: red;
+}
+.in-progress{
+  color:white;
+  background-color: blue;
+}
+.completed{
+  color:white;
+  background-color: green;
+}
 html{
   text-align: center;
 }
@@ -43,10 +55,6 @@ div{
   width: 45%;
   border: steelblue solid 1px;
   height: auto;
-}
-
-.btn {
-  border-radius: 35px;
 }
 
 .content {
